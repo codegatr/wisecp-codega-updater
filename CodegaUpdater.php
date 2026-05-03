@@ -79,7 +79,7 @@
         }
 
         /**
-         * AJAX endpoint - JSON gomulu HTML donus
+         * AJAX endpoint - JSON dogrudan stream + exit
          */
         public function ajaxAction($action)
         {
@@ -99,9 +99,10 @@
                 $result = ['status' => 'error', 'message' => 'Hata: ' . $e->getMessage()];
             }
 
+            // Plain text JSON dondur - WiseCP layout'u atla
             return [
-                'page_title'    => '',
-                'content'       => '<pre id="cdg-response">' . htmlspecialchars(json_encode($result, JSON_UNESCAPED_UNICODE), ENT_QUOTES) . '</pre>'
+                'page_title' => '',
+                'content'    => '<pre>' . json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</pre>'
             ];
         }
 
