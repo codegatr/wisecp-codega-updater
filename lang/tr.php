@@ -1,9 +1,7 @@
 <?php
     return [
-        'meta'          => [
-            'name'         => "Codega Güncelleyici",
-            'descriptions' => 'Codega temasını GitHub Release üzerinden tek tıkla güncelleyin.',
+        'meta'       => [
+            'name'          => 'Codega Smart Update Manager',
+            'description'   => 'Codega temasi icin gelismis guncelleme yoneticisi - Git blob SHA karsilastirmasi, Smart Sync, Force Sync, yedekler ve manuel ZIP yukleme',
         ],
-        'success1'      => "Ayarlar Başarıyla Kaydedildi",
-        'error1'        => "Bir Hata Oluştu",
     ];
