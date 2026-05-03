@@ -2,38 +2,30 @@
 
 WiseCP yönetici panelinden Codega temasını tek tıkla güncellemenizi sağlayan native eklenti.
 
-## Özellikler
-
-- ✅ WiseCP admin panelinin "Eklentiler" bölümünden erişim
-- ✅ GitHub Release üzerinden versiyon kontrolü
-- ✅ Otomatik ZIP indirme ve uygulama
-- ✅ `config.php` ve `theme-config.php` korunur
-- ✅ Changelog görüntüleme
-- ✅ Tek tıkla güncelleme
-
 ## Kurulum
 
-1. Bu eklenti klasörünü WiseCP kurulumunda şu yola atın:
+1. ZIP'i aç, `CodegaUpdater/` klasörünü:
    ```
-   coremio/modules/Addons/CodegaUpdater/
+   /coremio/modules/Addons/CodegaUpdater/
    ```
+2. WiseCP admin: **Yönetim → Tools → Eklentiler**
+3. **Codega Updater** → **Etkinleştir**
+4. **Yeni Sürüm Kontrol Et** ile başla
 
-2. WiseCP admin paneline girin: **Yönetim → Tools → Eklentiler**
-3. "Codega Updater" eklentisini bulun ve **Etkinleştir** butonuna tıklayın
-4. **Yapılandır** ile GitHub repo ve tema yolu ayarlarını kontrol edin
-5. Eklenti sayfasından "Yeni Sürüm Kontrol Et" ile başlayın
+## URL
 
-## Ayarlar
+Etkinleştirdikten sonra:
+```
+https://your-site.com/yns/tools/addons/CodegaUpdater
+```
 
-- **GitHub Deposu**: `codegatr/wisecp-codega-theme` (varsayılan)
-- **Tema Yolu**: `templates/website/Codega` (varsayılan)
-- **Otomatik Kontrol**: Aktif
-- **Kontrol Aralığı**: 86400 saniye (24 saat)
+## Özellikler
 
-## Geliştirici
-
-CODEGA - https://codega.com.tr
+- Native WiseCP AddonModule yapısı (sample-addon-module uyumlu)
+- GitHub Release üzerinden versiyon kontrolü
+- Otomatik ZIP indirme + açma + uygulama
+- `config.php` ve `theme-config.php` korunur
 
 ## Lisans
 
-MIT
+MIT - CODEGA
