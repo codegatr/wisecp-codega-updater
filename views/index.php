@@ -8,7 +8,19 @@
 <p>
     <?php
         $theme_path = isset($settings['theme_path']) ? $settings['theme_path'] : 'templates/website/Codega';
-        $manifest_path = ROOTDIR . '/' . trim($theme_path, '/') . '/manifest.json';
+
+        // ROOTDIR PHP 8'de undefined constant fatal atar, guvenli yol bulalim
+        if(defined('ROOTDIR')) {
+            $_root = ROOTDIR;
+        } elseif(isset($dir_path) && $dir_path) {
+            // $dir_path = /.../coremio/modules/Addons/CodegaUpdater/ -> 4 seviye yukari
+            $_root = realpath($dir_path . '/../../../../');
+        } elseif(!empty($_SERVER['DOCUMENT_ROOT'])) {
+            $_root = $_SERVER['DOCUMENT_ROOT'];
+        } else {
+            $_root = '';
+        }
+        $manifest_path = $_root . '/' . trim($theme_path, '/') . '/manifest.json';
         $current_version = '?';
         if(file_exists($manifest_path)) {
             $m = json_decode(file_get_contents($manifest_path), true);

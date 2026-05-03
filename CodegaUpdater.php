@@ -106,9 +106,25 @@
             ];
         }
 
+
+        /**
+         * Root yolu guvenli sekilde bul (ROOTDIR fallback)
+         */
+        protected function getRoot()
+        {
+            if(defined('ROOTDIR')) return ROOTDIR;
+            // $this->dir = /.../coremio/modules/Addons/CodegaUpdater/ -> 4 seviye yukari
+            if(!empty($this->dir)) {
+                $r = realpath($this->dir . '/../../../../');
+                if($r) return $r;
+            }
+            if(!empty($_SERVER['DOCUMENT_ROOT'])) return $_SERVER['DOCUMENT_ROOT'];
+            return '';
+        }
+
         public function checkUpdate($repo, $theme_path)
         {
-            $manifest_path = ROOTDIR . '/' . trim($theme_path, '/') . '/manifest.json';
+            $manifest_path = $this->getRoot() . '/' . trim($theme_path, '/') . '/manifest.json';
             if(!file_exists($manifest_path)) {
                 return ['status' => 'error', 'message' => 'Manifest bulunamadi: ' . $manifest_path];
             }
@@ -202,7 +218,7 @@
                 }
             }
 
-            $target = ROOTDIR . '/' . trim($theme_path, '/');
+            $target = $this->getRoot() . '/' . trim($theme_path, '/');
             $copied = $this->copyDir($source, $target, ['config.php', 'theme-config.php']);
             $this->removeDir($tmp_dir);
 
