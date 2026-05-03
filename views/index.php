@@ -1,3 +1,11 @@
+<?php
+@ini_set('display_errors', '1');
+@error_reporting(E_ALL);
+@file_put_contents(__DIR__ . '/../cdg_debug.log',
+    '[' . date('Y-m-d H:i:s') . "] view/index.php loaded\n",
+    FILE_APPEND
+);
+?>
 <p>This is the index page of the module</p>
 <p>Here you can show everything you want.</p>
 <p>The currently installed version is: <strong><?php echo $version; ?></strong></p>

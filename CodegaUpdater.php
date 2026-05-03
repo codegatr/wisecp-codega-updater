@@ -1,4 +1,27 @@
 <?php
+// === DEBUG: Beyaz ekran yerine gercek hatayi goster ===
+// Ek bir log dosyasi olusturmaya da calisalim
+@ini_set('display_errors', '1');
+@ini_set('display_startup_errors', '1');
+@error_reporting(E_ALL);
+
+// Eklenti dizinine kendi log dosyasi yaz - aktivasyon, hatalar icin
+$_cdg_log = function($msg) {
+    @file_put_contents(__DIR__ . '/cdg_debug.log',
+        '[' . date('Y-m-d H:i:s') . '] ' . $msg . "\n",
+        FILE_APPEND
+    );
+};
+$_cdg_log('Class loaded - file: ' . __FILE__);
+
+// Set fatal error handler
+register_shutdown_function(function() use ($_cdg_log) {
+    $err = error_get_last();
+    if($err && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+        $_cdg_log('FATAL: ' . print_r($err, true));
+    }
+});
+
     Class CodegaUpdater extends AddonModule {
         public $version = "1.0";
         function __construct(){
