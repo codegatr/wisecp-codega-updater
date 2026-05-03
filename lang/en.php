@@ -1,7 +1,10 @@
 <?php
-return [
-    'meta' => [
-        'name'        => 'Codega Updater',
-        'description' => 'Update the Codega theme directly from your WiseCP admin panel via GitHub Releases.',
-    ],
-];
+    return [
+        'meta'          => [
+            'name'         => "Codega Updater",
+            'descriptions' => 'Addon Description',
+        ],
+        'success1'      => 'Settings Saved Successfully',
+
+        'error1'        => 'Something went wrong',
+    ];

@@ -1,7 +1,10 @@
 <?php
-return [
-    'meta' => [
-        'name'        => 'Codega Updater',
-        'description' => 'Codega temasini WiseCP yonetici panelinden GitHub Release uzerinden tek tikla guncelleyin.',
-    ],
-];
+    return [
+        'meta'          => [
+            'name'         => "Codega Güncelleyici",
+            'descriptions' => 'Eklenti açıklaması',
+        ],
+        'success1'      => "Ayarlar Başarıyla Kaydedildi",
+
+        'error1'        => "Bir Hata Oluştu",
+    ];
