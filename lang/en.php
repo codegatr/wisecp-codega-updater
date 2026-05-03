@@ -1,9 +1,7 @@
 <?php
     return [
-        'meta'          => [
-            'name'         => "Codega Updater",
-            'descriptions' => 'Update the Codega theme via GitHub Releases with one click.',
+        'meta'       => [
+            'name'          => 'Codega Smart Update Manager',
+            'description'   => 'Advanced update manager for Codega theme - Git blob SHA comparison, Smart Sync, Force Sync, backups and manual ZIP upload',
         ],
-        'success1'      => "Settings saved successfully",
-        'error1'        => "An error occurred",
     ];
