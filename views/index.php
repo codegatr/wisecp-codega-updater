@@ -241,13 +241,17 @@
     };
 
     // === STATUS ===
-    function loadStatus(){
+    // GLOBAL atama - inline onclick="cuLoadStatus()" cagrilari icin gerekli
+    window.cuLoadStatus = function(){
         $('cu-status-content').innerHTML = '<div class="cu-alert cu-alert-info"><span class="cu-spin"></span>&nbsp; GitHub\'dan durum çekiliyor...</div>';
         api('status').then(function(r){
             STATUS_DATA = r;
             renderStatus(r);
         });
-    }
+    };
+    // Geri uyumluluk - eski onclick="loadStatus()" cagirilari da calissin
+    window.loadStatus = window.cuLoadStatus;
+    var loadStatus = window.cuLoadStatus;
 
     function renderStatus(r){
         var box = $('cu-status-content');
@@ -278,14 +282,14 @@
 
         box.innerHTML = html;
 
-        // Aksiyon butonları
+        // Aksiyon butonları (cuLoadStatus inline onclick'lerinde global referans)
         $('cu-action-card').style.display = 'block';
         var btns = '';
         if(r.needs_update){
             btns += '<button class="cu-btn cu-btn-primary" onclick="cuSync(false)">⚡ Smart Sync (sadece değişenleri)</button>';
         }
         btns += '<button class="cu-btn cu-btn-warn" onclick="cuSync(true)">🔥 Force Sync (tüm dosyaları yeniden indir)</button>';
-        btns += '<button class="cu-btn cu-btn-secondary" onclick="loadStatus()">🔄 Tekrar Kontrol</button>';
+        btns += '<button class="cu-btn cu-btn-secondary" onclick="cuLoadStatus()">🔄 Tekrar Kontrol</button>';
         $('cu-action-buttons').innerHTML = btns;
 
         // Dosyalar sekmesi içeriği
@@ -534,7 +538,7 @@
 
     // İlk yükleme
     <?php if($has_token): ?>
-    setTimeout(loadStatus, 100);
+    setTimeout(window.cuLoadStatus, 100);
     <?php else: ?>
     $('cu-status-content').innerHTML = '<div class="cu-alert cu-alert-warn">⚠️ GitHub token ayarlı değil. Önce <b>Ayarlar</b> sekmesinden token girin.</div>';
     $('cu-action-card').style.display = 'none';
