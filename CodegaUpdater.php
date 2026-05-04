@@ -19,7 +19,7 @@
  */
 class CodegaUpdater extends AddonModule {
 
-    public $version = "3.0.0";
+    public $version = "3.0.1";
 
     // ── Sabitler ─────────────────────────────────────────────────────
     const GH_BRANCH = 'main';
