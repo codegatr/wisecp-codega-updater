@@ -3,7 +3,7 @@
         'created_at' => 1714720000,
         'meta'       => [
             'name'          => "Codega Smart Update Manager",
-            'version'       => '3.0.0',
+            'version'       => '3.0.1',
             'author'        => 'CODEGA',
             'opening-type'  => 'normal',
         ],
